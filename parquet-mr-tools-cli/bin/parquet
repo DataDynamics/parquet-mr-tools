@@ -2,4 +2,4 @@
 
 CLASSPATH=/opt/parquet-mr-tools/lib/*
 
-java -cp "$CLASSPATH" org.apache.parquet.cli.Main $@
+java -Dparquet.avro.readInt96AsFixed=true -cp "$CLASSPATH" org.apache.parquet.cli.Main $@
