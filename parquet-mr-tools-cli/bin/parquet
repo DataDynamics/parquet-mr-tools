@@ -1,5 +1,17 @@
 #!/bin/sh
 
-CLASSPATH=/opt/parquet-mr-tools/lib/*
+HOME=/Users/fharenheit/projects/parquet/parquet-mr-tools/parquet-mr-tools-cli
+
+FILES=`ls -lsa $HOME/lib/*.jar | awk '{print $10}'`
+ 
+CLASSPATH=
+
+for  FILE in $FILES
+do
+echo $FILE
+	CLASSPATH=$FILE:$CLASSPATH
+done
+
+echo "CLASSPATH : $CLASSPATH"
 
 java -Dparquet.avro.readInt96AsFixed=true -cp "$CLASSPATH" org.apache.parquet.cli.Main $@
